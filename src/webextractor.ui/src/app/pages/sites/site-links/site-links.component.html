@@ -1,0 +1,46 @@
+<div class="container" *ngIf="site">
+
+  <div class="title">
+    <div class="main">{{site.name}}</div>
+    <div class="subtitle">({{site.domain}})</div>
+    <a routerLink="">[Back]</a>
+  </div>
+
+  <form id="link-entry" (ngSubmit)="createLink()" [formGroup]="formLinks">
+    <input type="hidden" formControlName="siteId">
+    <input type="text" placeholder="Type the link.." formControlName="url"  class="autofocus">
+    <button type="submit">POST</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th class="p80">Links</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let link of values.data">
+        <td>{{link.url}}</td>
+        <td class="text-right">
+          <a [routerLink]="['/expressions', link.id]">[View]</a>
+          <a (click)="deleteLink(link.id)">[Delete]</a>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2" class="text-right">
+          <a *ngIf="page > 1" (click)="goFirst()">|<</a>
+          <a *ngIf="page > 1" (click)="goPrevious()"><</a>
+          <b>[{{page}} / {{values.pagination.totalPages}}]</b>
+          <a *ngIf="page < values.pagination.totalPages" (click)="goNext()">></a>
+          <a *ngIf="page < values.pagination.totalPages" (click)="goLast()">>|</a>
+          <b class="light-blue">[{{values.pagination.totalRecords}}]</b>
+        </td>
+      </tr>
+    </tfoot>
+
+  </table>
+
+</div>

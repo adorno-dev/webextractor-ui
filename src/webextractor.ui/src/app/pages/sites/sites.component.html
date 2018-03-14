@@ -1,0 +1,35 @@
+<div class="container">
+
+  <div class="title">
+    <div class="main">All Sites</div>
+    <div class="subtitle">(Domains)</div>
+  </div>
+
+  <form id="site-entry" (ngSubmit)="createSite()" [formGroup]="formSites">
+    <input type="hidden" name="id" id="id">
+    <input type="text" placeholder="Type the name or alias..." formControlName="name"  class="autofocus">
+    <input type="text" placeholder="Type the domain or DNS..." formControlName="domain">
+    <button type="submit">POST</button>
+  </form>
+
+  <table *ngIf="sites.length > 0">
+    <thead>
+      <tr>
+        <th class="p45">Name</th>
+        <th>Domain</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let site of sites">
+        <td>{{site.name}}</td>
+        <td>{{site.domain}}</td>
+        <td class="text-right">
+          <a [routerLink]="['/links', site.id]">[View]</a>
+          <a (click)="deleteSite(site.id)">[Delete]</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

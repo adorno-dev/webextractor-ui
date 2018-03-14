@@ -1,0 +1,132 @@
+html, body {
+    background-color: rgb(238, 238, 238);
+}
+
+table {
+    border-spacing: 0;
+    width: 100%;
+    margin-bottom: 10px;
+    table-layout: fixed;
+}
+
+table th {
+    font-size: 1.3em;
+    text-align: left;
+    font-weight: normal;
+    color: rgb(95, 95, 95);
+    border-bottom: 1px solid rgb(168, 168, 168);
+    line-height: 30px;
+}
+
+table td {
+    color: rgb(144, 144, 144);
+    line-height: 30px;
+    border-bottom: 1px solid rgb(221, 221, 221);
+    font-size: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+a {
+    color: rgb(95, 95, 95);
+    text-decoration: none;
+    padding: 0 2px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+a:hover {
+    color: rgb(143, 143, 143);
+}
+
+form {
+    margin: 10px 0;
+}
+
+input[type=text] {
+    background-color: rgb(238, 238, 238);
+    border-radius: 0;
+    border: 2px solid rgb(143, 143, 143);
+    padding: 5px;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+button {
+    background-color: rgb(143, 143, 143);
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    padding: 5px 15px;
+    border-radius: 0;
+    border: 2px solid rgb(143, 143, 143);
+    cursor: pointer;
+}
+
+#site-entry {
+    display: grid;
+    grid-template-columns: auto auto 15%;
+    grid-gap: 5px;
+}
+
+#link-entry {
+    display: grid;
+    grid-template-columns: auto 15%;
+    grid-gap: 5px;
+}
+
+#expression-entry {
+    display: grid;
+    grid-template-columns: auto 15% 15%;
+    grid-gap: 5px;
+}
+
+#search-entry {
+    display: grid;
+    grid-template-columns: auto;
+    grid-gap: 5px;
+}
+
+#search-entry span {
+    font-size: 1.3em;
+    color: rgb(95, 95, 95);
+}
+
+.text-right {
+    text-align: right;
+}
+
+.title {
+    padding: 0 5px 0 0;
+}
+
+.title div {
+    display: inline;
+}
+
+.title .main {
+    font-size: 1.5em;
+    color: rgb(95, 95, 95);
+}
+
+.title .subtitle {
+    font-size: .95em;
+    color: rgb(143, 143, 143);
+}
+
+.light-blue {
+    color: lightblue;
+}
+
+.p90 { width: 90%; }
+.p80 { width: 80%; }
+.p70 { width: 70%; }
+.p60 { width: 60%; }
+.p55 { width: 55%; }
+.p50 { width: 50%; }
+.p45 { width: 45%; }
+.p40 { width: 40%; }
+.p30 { width: 30%; }
+.p20 { width: 20%; }
+.p10 { width: 10%; }

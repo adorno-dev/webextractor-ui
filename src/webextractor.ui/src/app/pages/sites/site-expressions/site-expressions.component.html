@@ -1,0 +1,66 @@
+<div class="container" *ngIf="link">
+
+  <div class="title">
+    <div class="main">Expressions</div>
+    <div class="subtitle">({{link.url}})</div>
+    <a [routerLink]="['/links', link.siteId]">[Back]</a>
+  </div>
+
+  <form id="expression-entry" (ngSubmit)="createExpression()" [formGroup]="formExpressions">
+    <input type="hidden" name="id" id="id">
+    <input type="hidden" formControlName="linkId">
+    <input type="text" placeholder="Type the pattern..." formControlName="value" class="autofocus" autofocus="autofocus">
+    <button type="button" (click)="onSearch()">CHECK</button>
+    <button type="submit">POST</button>
+
+  </form>
+
+  <table *ngIf="link.expressions.length > 0">
+    <thead>
+      <tr>
+        <th>Patterns</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let expression of link.expressions">
+        <td>{{expression.value}}</td>
+        <td class="text-right">
+          <a (click)="deleteExpression(expression.id)">[Delete]</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <form *ngIf="link.expressions.length > 0" id="search-entry" (ngSubmit)="createExpression()" [formGroup]="formSearch">
+    <span>Search</span>
+    <input type="hidden" name="id" id="id">
+    <input type="text" placeholder="Type the expression..." formControlName="search" (keyup)="onSearch()">
+  </form>
+
+  <table *ngIf="values && values.pagination.totalPages > 0">
+    <thead>
+      <tr>
+        <th attr.colspan="{{values.data[0].length}}">Values</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let items of values.data">
+        <td *ngFor="let item of items">{{item}}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td attr.colspan="{{values.data[0].length}}" class="text-right">
+          <a *ngIf="page > 1" (click)="goFirst()">|<</a>
+          <a *ngIf="page > 1" (click)="goPrevious()"><</a>
+          <b>[{{page}} / {{values.pagination.totalPages}}]</b>
+          <a *ngIf="page < values.pagination.totalPages" (click)="goNext()">></a>
+          <a *ngIf="page < values.pagination.totalPages" (click)="goLast()">>|</a>
+          <b class="light-blue">[{{values.pagination.totalRecords}}]</b>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+
+</div>
