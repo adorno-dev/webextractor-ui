@@ -85,31 +85,78 @@ export class SiteExpressionsComponent implements OnInit {
   }
 
   goNext() {
+
+    let search = this.formSearch.controls.search.valid ? this.formSearch.controls.search.value : '';
+    let expression = this.formExpressions.controls.value.valid ? this.formExpressions.controls.value.value : '';
+
     this.page++;
-    this.formExpressions.controls.value.valid ?
-      this.linkService.getPreviewValues(this.link.id, this.formExpressions.controls.value.value, this.page).subscribe(s => this.values = s) :
+
+    if (this.formExpressions.controls.value.valid)
+      this.linkService.getPreviewValues(this.link.id, expression, this.page).subscribe(s => this.values = s);
+    else if (this.formSearch.controls.search.valid)
+      this.linkService.getSearchValues(this.link.id, search, expression, this.page).subscribe(s => this.values = s);
+    else
       this.getValues(this.link.id);
   }
 
   goLast() {
+
+    let search = this.formSearch.controls.search.valid ? this.formSearch.controls.search.value : '';
+    let expression = this.formExpressions.controls.value.valid ? this.formExpressions.controls.value.value : '';
+
     this.page = this.values.pagination.totalPages;
-    this.formExpressions.controls.value.valid ?
-      this.linkService.getPreviewValues(this.link.id, this.formExpressions.controls.value.value, this.page).subscribe(s => this.values = s) :
+
+    if (this.formExpressions.controls.value.valid)
+      this.linkService.getPreviewValues(this.link.id, expression, this.page).subscribe(s => this.values = s);
+    else if (this.formSearch.controls.search.valid)
+      this.linkService.getSearchValues(this.link.id, search, expression, this.page).subscribe(s => this.values = s);
+    else
       this.getValues(this.link.id);
+
+    // this.formExpressions.controls.value.valid ?
+    //   this.linkService.getPreviewValues(this.link.id, this.formExpressions.controls.value.value, this.page).subscribe(s => this.values = s) :
+    //   this.getValues(this.link.id);
+
   }
 
   goPrevious() {
+
+    let search = this.formSearch.controls.search.valid ? this.formSearch.controls.search.value : '';
+    let expression = this.formExpressions.controls.value.valid ? this.formExpressions.controls.value.value : '';
+
     this.page--;
-    this.formExpressions.controls.value.valid ?
-      this.linkService.getPreviewValues(this.link.id, this.formExpressions.controls.value.value, this.page).subscribe(s => this.values = s) :
+
+    if (this.formExpressions.controls.value.valid)
+      this.linkService.getPreviewValues(this.link.id, expression, this.page).subscribe(s => this.values = s);
+    else if (this.formSearch.controls.search.valid)
+      this.linkService.getSearchValues(this.link.id, search, expression, this.page).subscribe(s => this.values = s);
+    else
       this.getValues(this.link.id);
+
+    // this.formExpressions.controls.value.valid ?
+    //   this.linkService.getPreviewValues(this.link.id, this.formExpressions.controls.value.value, this.page).subscribe(s => this.values = s) :
+    //   this.getValues(this.link.id);
+
   }
 
   goFirst() {
+
+    let search = this.formSearch.controls.search.valid ? this.formSearch.controls.search.value : '';
+    let expression = this.formExpressions.controls.value.valid ? this.formExpressions.controls.value.value : '';
+
     this.page = 1;
-    this.formExpressions.controls.value.valid ?
-      this.linkService.getPreviewValues(this.link.id, this.formExpressions.controls.value.value, this.page).subscribe(s => this.values = s) :
+
+    if (this.formExpressions.controls.value.valid)
+      this.linkService.getPreviewValues(this.link.id, expression, this.page).subscribe(s => this.values = s);
+    else if (this.formSearch.controls.search.valid)
+      this.linkService.getSearchValues(this.link.id, search, expression, this.page).subscribe(s => this.values = s);
+    else
       this.getValues(this.link.id);
+
+    // this.formExpressions.controls.value.valid ?
+    //   this.linkService.getPreviewValues(this.link.id, this.formExpressions.controls.value.value, this.page).subscribe(s => this.values = s) :
+    //   this.getValues(this.link.id);
+
   }
 
 }

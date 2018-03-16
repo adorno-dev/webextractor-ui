@@ -38,7 +38,7 @@
     <input type="text" placeholder="Type the expression..." formControlName="search" (keyup)="onSearch()">
   </form>
 
-  <table *ngIf="values && values.pagination.totalPages > 0">
+  <table *ngIf="values != null && values.pagination.totalPages > 0">
     <thead>
       <tr>
         <th attr.colspan="{{values.data[0].length}}">Values</th>

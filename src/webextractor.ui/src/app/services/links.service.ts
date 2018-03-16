@@ -27,6 +27,7 @@ export class LinksService {
   }
 
   getSearchValues(id: string, search: string, expression: string, page: number = 1): Observable<Object> {
+    console.log('--> ', id, search, expression, page);
     return this.http.get<Object>(`${this.endpoint}/${id}/search/values/page/${page}`, { headers: { "search": search, "expression": expression } });
   }
 
